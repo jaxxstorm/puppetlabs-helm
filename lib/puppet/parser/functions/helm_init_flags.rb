@@ -16,6 +16,7 @@ module Puppet::Parser::Functions
     flags << "--host '#{opts['host']}'" if opts['host'].to_s != 'undef'
     flags << "--kube-context '#{opts['kube_context']}'" if opts['kube_context'].to_s != 'undef'
     flags << "--local-repo-url '#{opts['local_repo_url']}'" if opts['local_repo_url'].to_s != 'undef'
+    flags << "--override '#{opts['override'].join(',')}'"  if opts['override'].to_s != 'undef'
     flags << '--net-host' if opts['net_host']
     flags << "--service-account '#{opts['service_account']}'" if opts['service_account'].to_s != 'undef'
     flags << '--skip-refresh' if opts['skip_refresh']
