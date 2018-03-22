@@ -3,6 +3,8 @@ define helm::helm_init (
   Boolean $init                      = true,
   Boolean $canary_image              = false,
   Boolean $client_only               = false,
+  Integer $exec_tries                = 3,
+  Integer $exec_try_sleep            = 10,
   Boolean $debug                     = false,
   Boolean $dry_run                   = false,
   Optional[Array] $env               = undef,
@@ -77,6 +79,8 @@ define helm::helm_init (
       path        => $path,
       logoutput   => true,
       timeout     => 0,
+      tries       => $exec_tries,
+      try_sleep   => $exec_try_sleep,
       unless      => $unless_init,
     }
   }
